@@ -1,18 +1,21 @@
 import axios from 'axios'
 import qs from 'qs'
 
-// import store from '@/store'
+import store from '@/store/store';
+
 // 配置根路径开发、线上等环境服务端的配置
-let root = process.env.VUE_APP_API_ROOT
+let root = process.env.REACT_APP_ROOT
 axios.defaults.baseURL = root
 axios.defaults.withCredentials = true // 跨域
 axios.defaults.timeout = 50000
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
 // 请求拦截
 axios.interceptors.request.use(
+  // 请求头添加必要的参数
   config => {
-    /*     config.headers.authKey = store.state.authKey
-        config.headers.sessionId = store.state.sessionId */
+    let initData = store.getState().initData
+    config.headers.authKey = initData.authKey
+    config.headers.sessionId = initData.sessionId
     return config
   },
   error => {
