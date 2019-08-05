@@ -85,11 +85,11 @@ class Login extends Component {
 }
 
 export default connect(state => {
-  return {
+  return { // 第一个参数是返回store的state
     initData: state.initData,
   }
 },
-  {
+  { // 这里是action，需要引入
     getContractList,
     setUserInfo
-  })(Login);
+  })(Login); // Login为react的一个页面

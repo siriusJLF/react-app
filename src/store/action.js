@@ -25,7 +25,7 @@ export const setUserInfo = (payload) => {
     data: payload
   }
 }
-
+// 设置左边导航默认值
 export const setDefaultSelectedKeys = (val) => {
   return {
     type: "setDefaultSelectedKeys",
